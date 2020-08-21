@@ -48,7 +48,8 @@ public final class Morse {
      * @return a class instance of type {@link Morse}.
      */
     public static Morse getInstance () {
-        return factory.computeIfAbsent(new Morse(), k -> new Morse());
+        var obj = new Morse();
+        return factory.computeIfAbsent(obj, k -> obj);
     }
 
     /**
@@ -57,7 +58,8 @@ public final class Morse {
      * @return a class instance of type {@link Morse} linked with a database of user's choice via a {@link Path}.
      */
     public static Morse getInstance (final Path dataBaseFile) {
-        return factory.computeIfAbsent(new Morse(dataBaseFile), k -> new Morse(dataBaseFile));
+        var obj = new Morse(dataBaseFile);
+        return factory.computeIfAbsent(obj, k -> obj);
     }
 
 
@@ -68,7 +70,8 @@ public final class Morse {
      * @return a class instance of type {@link Morse} linked with database path and a separator.
      */
     public static Morse getInstance (final Path dataBaseFile, final String separator) {
-        return factory.computeIfAbsent(new Morse(dataBaseFile, separator), k -> new Morse(dataBaseFile, separator));
+        var obj = new Morse(dataBaseFile, separator);
+        return factory.computeIfAbsent(obj, k -> obj);
     }
 
     /**
@@ -79,7 +82,8 @@ public final class Morse {
      * @return a class instance of type {@link Morse} linked with the database with a specific path, charset, and separator.
      */
     public static Morse getInstance (final Path dataBaseFile, final String separator, final Charset cs) {
-        return factory.computeIfAbsent(new Morse(dataBaseFile, separator, cs), k -> new Morse(dataBaseFile, separator, cs));
+        var obj = new Morse(dataBaseFile, separator, cs);
+        return factory.computeIfAbsent(obj, k -> obj);
     }
 
     /**
@@ -88,7 +92,6 @@ public final class Morse {
     private Morse() {
         this (getDefaultDataBaseFile());
     }
-
 
     /**
      * Constructor creates a class instance of type {@link Morse} with a specific database provided by the user via a valid path.
